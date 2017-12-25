@@ -17,7 +17,9 @@ class ProjectPage extends Component {
     }
 
     componentDidMount() {
-        new BScroll(this.refs.projectList, {})
+        new BScroll(this.refs.projectList, {
+            useTransition: true
+        })
     }
 
     render() {
@@ -26,28 +28,42 @@ class ProjectPage extends Component {
             cities: [{sensorId: 1, name: '轴力监测点1', strain: 50, unit: 'KN', limitValue: 100, maxValue: 61, },
                 {sensorId: 2, name: '轴力监测点2', strain: 90, unit: 'KN', limitValue: 100, maxValue: 61, },
                 {sensorId: 3, name: '位移监测点1',  strain: 15, unit: 'mm', limitValue: 12, maxValue: 15, },
-                {sensorId: 4, name: '位移监测点2',  strain: 3, unit: 'mm', limitValue: 15, maxValue: 3, }]}
+                {sensorId: 4, name: '位移监测点2',  strain: 3, unit: 'mm', limitValue: 15, maxValue: 3, },
+                {sensorId: 5, name: '位移监测点3',  strain: 3, unit: 'mm', limitValue: 15, maxValue: 3, },
+                {sensorId: 6, name: '位移监测点4',  strain: 1, unit: 'mm', limitValue: 10, maxValue: 3, },
+                {sensorId: 7, name: '位移监测点4',  strain: 1, unit: 'mm', limitValue: 10, maxValue: 3, },
+                // {sensorId: 8, name: '轴力监测点1', strain: 50, unit: 'KN', limitValue: 100, maxValue: 61, },
+                // {sensorId: 9, name: '轴力监测点2', strain: 90, unit: 'KN', limitValue: 100, maxValue: 61, },
+                // {sensorId: 10, name: '位移监测点1',  strain: 15, unit: 'mm', limitValue: 12, maxValue: 15, },
+                // {sensorId: 11, name: '位移监测点2',  strain: 3, unit: 'mm', limitValue: 15, maxValue: 3, },
+                // {sensorId: 12, name: '位移监测点3',  strain: 3, unit: 'mm', limitValue: 15, maxValue: 3, },
+                // {sensorId: 13, name: '位移监测点4',  strain: 1, unit: 'mm', limitValue: 10, maxValue: 3, },
+            ]}
         return (
-            <div>
+            <div className="project-page">
                 <Header title={ project.name } back={true}/>
-                <div className='wrapper' >
-                    <div className='projectTitle'>项目监测间隔:{project.interval}分钟/次</div>
-                    <main ref='projectList' className='content'>
-                        <ul>
-                            {project.cities.map(item => {
-                                return <li
-                                    className="index-list-item border-bottom-1px"
-                                >
-                                    <Link to={{
-                                        pathname: '/project/sensor',
-                                        search: `?id=${item.sensorId}`,
-                                    }}>
-                                        <SensorItem sensor={item}/>
-                                    </Link>
-                                </li>
-                            })}
-                        </ul>
-                    </main>
+                <div className='wrapper'>
+                    <div className="content" ref='projectList'>
+                        <div>
+                            <div className='projectTitle'>项目监测间隔:{project.interval}分钟/次</div>
+                            <main>
+                                <ul>
+                                    {project.cities.map(item => {
+                                        return <li
+                                            className="index-list-item border-bottom-1px"
+                                        >
+                                            <Link to={{
+                                                pathname: '/project/sensor',
+                                                search: `?id=${item.sensorId}`,
+                                            }}>
+                                                <SensorItem sensor={item}/>
+                                            </Link>
+                                        </li>
+                                    })}
+                                </ul>
+                            </main>
+                        </div>
+                    </div>
                 </div>
             </div>
         )

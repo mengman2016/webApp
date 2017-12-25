@@ -43,7 +43,7 @@ class IndexList extends Component {
                                                 {project.cities.map(item => {
                                                     return <li
                                                         className="index-list-item border-bottom-1px"
-                                                        onTouchStart={this.addActiveCls()}
+                                                        onTouchStart={() => SelectProject(project)}
                                                         onClick={() => SelectProject(project)}>
                                                         <Link to={{
                                                             pathname: '/project',
