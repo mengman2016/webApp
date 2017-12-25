@@ -10,9 +10,15 @@ export default class Header extends Component {
         history.go(-1)
     }
 
+    componentDidMount() {
+        this.refs.header.addEventListener('touchmove', function (e) {
+            e.preventDefault()
+        }, false)
+    }
+
     render() {
         return (
-            <header className='header'>
+            <header className='header' ref='header'>
                 <h1>{this.props.title}</h1>
                 {this.props.back ? <img className='back' src="../../../assets/back.svg" onClick={this.handleClickOnImage.bind(this, null)} /> : null }
             </header>

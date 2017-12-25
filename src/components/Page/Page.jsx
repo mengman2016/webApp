@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Header from '../Header/Header'
 import IndexList from '../IndexList/IndexList'
+import AppTabBar from '../TabBar/TabBar'
 
 import style from './Page.less'
 export default class Page extends Component {
@@ -10,7 +11,7 @@ export default class Page extends Component {
     render() {
         return (
             <div className='page'>
-                <Header title={this.props.title}/>
+                <Header title={this.props.title} />
                 <div className='wrapper'>
                     <main className='content'>
                         <div className='split' />
@@ -21,6 +22,7 @@ export default class Page extends Component {
                         </div>
                     </main>
                 </div>
+                <AppTabBar/>
             </div>
         )
     }

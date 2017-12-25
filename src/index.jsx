@@ -17,4 +17,4 @@ ReactDOM.render(
             <Route path="/" component={App} />
         </HashRouter>
     </Provider>
-, document.getElementById('example'));
+, document.getElementById('root'));
