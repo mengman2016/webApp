@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import Header from '../Header/Header'
-import IndexList from '../IndexList/IndexList'
 import AppTabBar from '../TabBar/TabBar'
 
 import style from './Page.less'
@@ -17,7 +16,7 @@ export default class Page extends Component {
                         <div className='split' />
                         <div className='view-wrapper'>
                             <div className='index-list-wrapper'>
-                                <IndexList />
+                                {this.props.children}
                             </div>
                         </div>
                     </main>

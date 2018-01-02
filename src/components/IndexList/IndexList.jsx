@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import styles from './IndexList.less'
 
 const data = [
-    {projectId: 1,name: "广州市天河区三诚金融中心一期工程",interval: 60, cities: [{sensorId: 1, name: '轴力监测点1',tag:"北京"}, {sensorId: 2, name: '位移监测点1', tag:"上海"}]},
+    {projectId: 1,name: "广州市天河区三诚金融中心一期工程",interval: 60, cities: [{sensorId: 1, name: '轴力监测点1'}, {sensorId: 2, name: '位移监测点1'}]},
     {projectId: 2, cities: [{sensorId: 3, name: '鞍山市', tag:"鞍山"}, {sensorId: 4, name: '安庆市', tag:"安庆"}],name: "A"},
     {projectId: 3, cities: [{sensorId: 1, name: '北京市', tag:"北京"}, {sensorId: 5, name: '巴音郭楞州', tag:"巴音郭楞州"}, {sensorId: 6, name: '博尔塔拉州', tag: '博尔塔拉州'}],name: "B"},
     {projectId: 4, cities: [{sensorId: 7, name: '成都市', tag:"成都"}],name: "C"},
@@ -46,8 +46,7 @@ class IndexList extends Component {
                                                         onTouchStart={() => SelectProject(project)}
                                                         onClick={() => SelectProject(project)}>
                                                         <Link to={{
-                                                            pathname: '/project',
-                                                            search: `?id=${project.projectId}`,
+                                                            pathname: '/project'
                                                         }}>
                                                             {item.name}
                                                         </Link>

@@ -1,0 +1,29 @@
+数据结构
+indexPage
+ [{
+    projectId: 1,
+    name: "广州市天河区三诚金融中心一期工程",
+    interval: 60,
+    cities: [
+        {sensorId: 1, name: '轴力监测点1'},
+        {sensorId: 2, name: '位移监测点1'}
+    ]
+ },...]
+
+projectPage
+ sensorList = [
+    {
+        sensorId: 1,
+        name: '轴力监测点1',
+        strain: 50,
+        unit: 'KN',
+        limitValue: 100,
+        maxValue: 61, },
+    {
+        sensorId: 2,
+        name: '轴力监测点2',
+        strain: 90,
+        unit: 'KN',
+        limitValue: 100,
+        maxValue: 61, }
+ ];
