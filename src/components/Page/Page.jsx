@@ -21,7 +21,7 @@ export default class Page extends Component {
                         </div>
                     </main>
                 </div>
-                <AppTabBar/>
+                <AppTabBar />
             </div>
         )
     }

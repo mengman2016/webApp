@@ -1,23 +1,22 @@
 import React, {Component} from 'react'
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux'
 import style from './TabBar.less'
 import { TabBar } from 'antd-mobile'
 
-export default class AppTabBar extends React.Component {
+class AppTabBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             selectedTab: location.hash,
         };
     }
-    renderContent(path) {
-        location.replace(`#/${path}`)
-    }
 
     componentDidMount() {
         this.refs.tabBar.addEventListener('touchmove', function (e) {
             e.preventDefault()
         }, false);
+        console.log(this.props)
     }
 
     render() {
@@ -50,7 +49,7 @@ export default class AppTabBar extends React.Component {
                                 this.setState({
                                     selectedTab: 'index',
                                 });
-                                {this.renderContent('index')}
+                                {this.props.history.push('/index')}
                             }}
                             data-seed="logId"
                         >
@@ -78,7 +77,7 @@ export default class AppTabBar extends React.Component {
                                 this.setState({
                                     selectedTab: 'data',
                                 });
-                                {this.renderContent('data')}
+                                {this.props.history.push('/data')}
                             }}
                             data-seed="logId1"
                         >
@@ -106,7 +105,7 @@ export default class AppTabBar extends React.Component {
                                 this.setState({
                                     selectedTab: 'message',
                                 });
-                                {this.renderContent('message')}
+                                {this.props.history.push('/message')}
                             }}
                         >
                         </TabBar.Item>
@@ -120,7 +119,7 @@ export default class AppTabBar extends React.Component {
                                 this.setState({
                                     selectedTab: 'my',
                                 });
-                                {this.renderContent('my')}
+                                {this.props.history.push('/my')}
                             }}
                         >
                         </TabBar.Item>
@@ -130,3 +129,11 @@ export default class AppTabBar extends React.Component {
         );
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        userInfo: state.LoginReducer.userInfo
+    }
+}
+
+export default connect(mapStateToProps)(withRouter(AppTabBar))

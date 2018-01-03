@@ -9,6 +9,7 @@ import style from './IndexPage.less'
 export default class IndexPage extends Component {
     constructor(props) {
         super(props)
+        console.log(this.props)
         this.state = {
             title: '首页',
         }

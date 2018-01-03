@@ -39,10 +39,11 @@ class DataPage extends Component {
         }
         //发请求
         //todo  待safari支持pwa时再改
-        window.localStorage.setItem('userInfo', {
+        let userInfoString = JSON.stringify({
             phone: this.state.phone,
             token: this.state.token
         })
+        window.localStorage.setItem('userInfo', userInfoString)
         this.props.loginIn({
             phone: this.state.phone,
             token: this.state.token
