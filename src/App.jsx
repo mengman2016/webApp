@@ -17,7 +17,7 @@ export default class App extends Component {
         if(userInfo) {
             this.props.history.push('/index')
         }else {
-            this.props.history.pushState('/login')
+            this.props.history.push('/login')
         }
     }
 
