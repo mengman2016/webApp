@@ -32,39 +32,33 @@ class ProjectPage extends Component {
                 sensorList
             })
             console.log(this.state)
-        }, 2000)
+        }, 500)
+    }
 
-        new BScroll(this.refs.projectList, {
-            useTransition: true
-        })
+    selectItem(item) {
+        this.props.selectItem(item)
+        this.props.history.push('/sensor')
     }
 
     render() {
         return (
-            <div className="project-page">
+            <div ref="sensorpage" className="sensor-page">
                 <Header title={ this.props.project.name } back={true}/>
-                <div className='wrapper'>
-                    <div className="content" ref='projectList'>
-                        <div>
-                            <div className='projectTitle'>项目监测间隔:{this.props.project.interval}分钟/次</div>
-                            <main>
-                                <ul>
-                                    {this.state.sensorList.map(item => {
-                                        return <li
-                                            className="index-list-item border-bottom-1px"
-                                        >
-                                            <Link to={{
-                                                pathname: '/sensor',
-                                            }}>
-                                                <SensorItem sensor={item}/>
-                                            </Link>
-                                        </li>
-                                    })}
-                                </ul>
-                            </main>
-                        </div>
-                    </div>
+                <div className="project-wrapper">
+                    <ul>
+                        {this.state.sensorList.map(item => {
+                            return <li
+                                className="index-list-item border-bottom-1px"
+                                onClick={this.selectItem.bind(this, item)}
+                            >
+                                <SensorItem sensor={item}/>
+                            </li>
+                        })}
+                    </ul>
                 </div>
+                <footer>
+                    <div></div>
+                </footer>
             </div>
         )
     }
@@ -76,4 +70,15 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(ProjectPage)
+function mapDispatchToProps(dispatch) {
+    return {
+        selectItem: (item) => {
+            dispatch({
+                type: 'SELECT_ITEM',
+                item: item
+            })
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectPage)
