@@ -46,6 +46,9 @@ class AppTabBar extends React.Component {
                             selected={this.state.selectedTab.indexOf('index') > -1}
                             badge={1}
                             onPress={() => {
+                                if(this.state.selectedTab.indexOf('index') > -1) {
+                                    return
+                                }
                                 this.setState({
                                     selectedTab: 'index',
                                 });
@@ -74,6 +77,9 @@ class AppTabBar extends React.Component {
                             badge={'new'}
                             selected={this.state.selectedTab.indexOf('data') > -1}
                             onPress={() => {
+                                if(this.state.selectedTab.indexOf('data') > -1) {
+                                    return
+                                }
                                 this.setState({
                                     selectedTab: 'data',
                                 });
@@ -102,6 +108,9 @@ class AppTabBar extends React.Component {
                             dot
                             selected={this.state.selectedTab.indexOf('message') > -1}
                             onPress={() => {
+                                if(this.state.selectedTab.indexOf('message') > -1) {
+                                    return
+                                }
                                 this.setState({
                                     selectedTab: 'message',
                                 });
@@ -116,6 +125,9 @@ class AppTabBar extends React.Component {
                             key="my"
                             selected={this.state.selectedTab.indexOf('my')> -1}
                             onPress={() => {
+                                if(this.state.selectedTab.indexOf('my')> -1) {
+                                    return
+                                }
                                 this.setState({
                                     selectedTab: 'my',
                                 });

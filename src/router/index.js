@@ -1,6 +1,9 @@
 import { Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import React from 'react'
+
+import style from './index.less'
+
 import LoginPage from '../page/LoginPage/LoginPage'
 import IndexPage from '../page/IndexPage/IndexPage'
 import ProjectPage from '../page/ProjectPage/ProjectPage'
@@ -63,9 +66,9 @@ class IndexRouter extends React.Component{
             <div>
                 {RouteList.map((item) => {
                     if (this.props.userInfo) {
-                        return <Route path={item.path} component={item.page} />
+                        return <Route path={item.path} key={item.path} component={item.page} />
                     }else if(!item.Authentication){
-                        return <Route path={item.path} component={item.page} />
+                        return <Route path={item.path} key={item.path} component={item.page} />
                     }
                 }) }
             </div>
