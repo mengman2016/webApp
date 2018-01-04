@@ -12,6 +12,12 @@ class DataPage extends Component {
         }
     }
 
+    componentDidMount() {
+        this.refs.loginpage.addEventListener('touchmove', function (e) {
+            e.preventDefault()
+        }, false)
+    }
+
     phoneChangeHandle(event) {
         this.setState({
             phone: event.target.value
@@ -53,7 +59,7 @@ class DataPage extends Component {
 
     render() {
         return (
-            <div className="login-page">
+            <div ref="loginpage" className="login-page">
                 <form className="login-form" action="login">
                     <input onChange={this.phoneChangeHandle.bind(this)} value={this.state.phone} type="tel" placeholder="请输入手机号"/>
                     <input onChange={this.passwordChangeHandle.bind(this)}  value={this.state.password} type="password" placeholder="请输入密码"/>

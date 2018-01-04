@@ -2,11 +2,17 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { Button, Toast } from 'antd-mobile';
 import Page from '../../components/Page/Page'
+import style from './MyPage.less'
 
 class MyPage extends Component {
     constructor(props){
         super(props)
-        console.log(this.props)
+    }
+
+    componentDidMount() {
+        this.refs.mypage.addEventListener('touchmove', function (e) {
+            e.preventDefault()
+        }, false)
     }
 
     loginOut() {
@@ -17,11 +23,13 @@ class MyPage extends Component {
 
     render() {
         return (
-            <Page  title='我的'>
-                <div>
-                    手机号: {this.props.userInfo ? this.props.userInfo.phone : ''}
+            <Page title='我的'>
+                <div className="my-page" ref='mypage'>
+                    <div className="my-item">
+                        手机号: {this.props.userInfo ? this.props.userInfo.phone : ''}
+                    </div>
+                    <Button className="my-exit" onClick={this.loginOut.bind(this)} type="warning">退出</Button>
                 </div>
-                <Button onClick={this.loginOut.bind(this)} type="default">退出</Button>
             </Page>
         )
     }
