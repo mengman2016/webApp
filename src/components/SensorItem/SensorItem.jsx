@@ -27,7 +27,7 @@ export default class SensorItem extends Component {
         return (
             <div className='sensorItem' style={{backgroundColor: this.state.color, boxShadow: this.state.boxShadow}}>
                 <div className='title'>{this.props.sensor.name}</div>
-                <div className='percent'>{(this.props.sensor.strain/this.props.sensor.limitValue)*100}%</div>
+                <div className='percent'>{(this.props.sensor.strain*100/this.props.sensor.limitValue).toFixed(2)}%</div>
                 <div className='strain'>{this.props.sensor.strain}{this.props.sensor.unit}</div>
                 <div className='value'>预警值:{this.props.sensor.limitValue}{this.props.sensor.unit}</div>
                 <div className='value'>历史最大值:{this.props.sensor.maxValue}{this.props.sensor.unit}</div>

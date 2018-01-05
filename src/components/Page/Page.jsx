@@ -13,11 +13,8 @@ export default class Page extends Component {
                 <Header title={this.props.title} />
                 <div className='wrapper'>
                     <main className='content'>
-                        <div className='split' />
                         <div className='view-wrapper'>
-                            <div className='index-list-wrapper'>
                                 {this.props.children}
-                            </div>
                         </div>
                     </main>
                 </div>

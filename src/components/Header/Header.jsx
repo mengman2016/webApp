@@ -20,7 +20,7 @@ export default class Header extends Component {
         return (
             <header className='header' ref='header'>
                 <h1>{this.props.title}</h1>
-                {this.props.back ? <img className='back' src="../../../assets/back.svg" onClick={this.handleClickOnImage.bind(this, null)} /> : null }
+                {this.props.back ? <div className='back' onClick={this.handleClickOnImage.bind(this, null)} /> : null }
             </header>
         )
     }

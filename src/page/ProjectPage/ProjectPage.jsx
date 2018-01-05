@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import BScroll from 'better-scroll'
 import Header from '../../components/Header/Header'
 import SensorItem from '../../components/SensorItem/SensorItem'
+import AppTabBar from '../../components/TabBar/TabBar'
 
 import styles from './ProjectPage.less'
 
@@ -18,7 +18,7 @@ class ProjectPage extends Component {
     }
 
     componentDidMount() {
-        var sensorList = [{sensorId: 1, name: '轴力监测点1', strain: 50, unit: 'KN', limitValue: 100, maxValue: 61, },
+        var sensorList = [{sensorId: 1, name: '轴力监测点1', strain: 50, unit: 'KN', limitValue: 130, maxValue: 61, },
                 {sensorId: 2, name: '轴力监测点2', strain: 90, unit: 'KN', limitValue: 100, maxValue: 61, },
                 {sensorId: 3, name: '位移监测点1',  strain: 15, unit: 'mm', limitValue: 12, maxValue: 15, },
                 {sensorId: 4, name: '位移监测点2',  strain: 3, unit: 'mm', limitValue: 15, maxValue: 3, },
@@ -56,9 +56,7 @@ class ProjectPage extends Component {
                         })}
                     </ul>
                 </div>
-                <footer>
-                    <div></div>
-                </footer>
+                <AppTabBar/>
             </div>
         )
     }

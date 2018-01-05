@@ -11,6 +11,7 @@
     "antd-mobile": "^2.0.0",
     "babel-runtime": "^6.11.6",
     "better-scroll": "^1.6.2",
+    "file-loader": "^1.1.6",
     "rc-form": "^0.17.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -42,6 +43,7 @@
     "url-loader": "^0.5.7",
     "webpack": "^3.0.0",
     "webpack-bundle-analyzer": "^2.8.1",
+    "copy-webpack-plugin": "^4.3.1",
     "webpack-dev-server": "2.7.1",
     "webpack-visualizer-plugin": "^0.1.11"
   }

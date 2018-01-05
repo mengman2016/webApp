@@ -1,19 +1,10 @@
 const path = require('path')
 const webpack = require('webpack')
+var CopyWebpackPlugin = require('copy-webpack-plugin')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const pxtorem = require('postcss-pxtorem');
-
-const Visualizer = require('webpack-visualizer-plugin'); // remove it in production environment.
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin; // remove it in production environment.
-const otherPlugins = process.argv[1].indexOf('webpack-dev-server') >= 0 ? [] : [
-  new Visualizer(), // remove it in production environment.
-  new BundleAnalyzerPlugin({
-    defaultSizes: 'parsed',
-    // generateStatsFile: true,
-    statsOptions: { source: false }
-  }), // remove it in production environment.
-];
 
 const postcssOpts = {
   ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
@@ -59,7 +50,7 @@ module.exports = {
           // presets: [['es2015', { modules: false }], 'stage-0', 'react'] // tree-shaking
         }
       },
-      { test: /\.(jpg|png)$/, loader: "url-loader?limit=8192" },
+      { test: /\.(jpg|png|svg)$/, loader: "url-loader?limit=8192&name=[name].[ext]" },
       // 注意：如下不使用 ExtractTextPlugin 的写法，不能单独 build 出 css 文件
       // { test: /\.less$/i, loaders: ['style-loader', 'css-loader', 'less-loader'] },
       // { test: /\.css$/i, loaders: ['style-loader', 'css-loader'] },
@@ -81,10 +72,10 @@ module.exports = {
       }
     ]
   },
-  externals: {
-    "react": "React",
-    "react-dom": "ReactDOM"
-  },
+  // externals: {
+  //   "react": "React",
+  //   "react-dom": "ReactDOM"
+  // },
   plugins: [
     new webpack.optimize.ModuleConcatenationPlugin(),
     // new webpack.optimize.CommonsChunkPlugin('shared.js'),
@@ -93,7 +84,26 @@ module.exports = {
       name: 'shared',
       filename: 'shared.js'
     }),
+
     new ExtractTextPlugin({ filename: '[name].css', allChunks: true }),
-    ...otherPlugins
+    new HtmlWebpackPlugin({
+        filename:  path.resolve(__dirname, '../dist/index.html'),
+        template: 'index.html',
+        inject: true,
+        minify: {
+            removeComments: true,
+            collapseWhitespace: true,
+            removeAttributeQuotes: true
+              // more options:
+              // https://github.com/kangax/html-minifier#options-quick-reference
+        }
+    }),
+      new CopyWebpackPlugin([
+          {
+              from: path.resolve(__dirname, './src/assets'),
+              to: 'assets',
+              ignore: ['.*']
+          }
+      ])
   ]
 }
