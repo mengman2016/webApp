@@ -16,6 +16,12 @@ class MyPage extends Component {
     }
 
     loginOut() {
+        fetch('/api/aaa', {method: 'get'}).then(function (res) {
+            console.log(res)
+        }, function (err) {
+            console.log(err)
+        })
+        return;
         this.props.loginOut()
         window.localStorage.removeItem('userInfo')
         this.props.history.push('/login')

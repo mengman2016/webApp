@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import BScroll from 'better-scroll'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import styles from './IndexList.less'
@@ -21,7 +20,6 @@ class IndexList extends Component {
     }
 
     componentDidMount() {
-        new BScroll(this.refs.wrapper, {})
     }
 
     addActiveCls(event) {

@@ -105,5 +105,15 @@ module.exports = {
               ignore: ['.*']
           }
       ])
-  ]
+  ],
+    devServer: { // DevServer 相关的配置
+        proxy: { // 代理到后端服务接口
+            '/api': 'http://localhost:3000'
+        },
+        // contentBase: path.join(__dirname, 'public'), // 配置 DevServer HTTP 服务器的文件根目录
+        // compress: true, // 是否开启 gzip 压缩
+        historyApiFallback: false, // 是否开发 HTML5 History API 网页
+        // hot: true, // 是否开启模块热替换功能
+        https: false, // 是否开启 HTTPS 模式
+    }
 }
